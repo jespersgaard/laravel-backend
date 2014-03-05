@@ -1,0 +1,27 @@
+{
+    "name": "jeroen-g/laravel-backend",
+    "description": "An extendable universal backend for Laravel.",
+    "license": "EUPL-1.1",
+    "authors": [
+        {
+            "name": "Jeroen G",
+            "email": "jeroeng.jeroeng@gmail.com"
+        }
+    ],
+    "keywords": ["Laravel", "Backend", "Admin"],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.1.*",
+        "jeroen-g/laravel-auth": "dev-master"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations",
+            "src/controllers"
+        ],
+        "psr-0": {
+            "JeroenG\\LaravelBackend\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
