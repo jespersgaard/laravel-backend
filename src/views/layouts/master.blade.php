@@ -7,32 +7,25 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('packages/jeroen-g/laravel-backend/css/backend.css'); }}">
 </head>
 <body>
-		<div id="head-section">
-			<div class="ui page grid">
-				<div class="row">
-				  <div class="column">
+	<div id="head-section">
 
-				  	@yield('header')
-
-				  	@yield('menu')
-
-				  </div>
-				</div>
-			</div>
-		</div>
+		@yield('header')
 		
+		@yield('menu')
 
-		<div class="ui page grid">
-			<div class="row">
-		  		<div class="column">
-		  			<div id="content-section" class="ui basic segment">
+	</div>
+	
+	<div class="ui page grid">
+		<div class="row">
+	  		<div class="column">
+	  			<div id="content-section">
 
-		  				@yield('content')
-		  					
-		  			</div>
-		  		</div>
-			</div>
+	  				@yield('content')
+	  					
+	  			</div>
+	  		</div>
 		</div>
+	</div>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
  <script src="{{ asset('packages/jeroen-g/laravel-backend/js/semantic.min.js') }}"></script>
