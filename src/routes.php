@@ -8,10 +8,16 @@
 | Here is where all of the routes for the package are registered.
 |
 */
-View::composer(array('admin'), function($view)
+View::composer('backend::layouts.master', function($view)
 {
     $view->nest('menu', 'backend::layouts.menu');
     $view->nest('header', 'backend::layouts.header');
+});
+
+View::composer('backend::layouts.menu', function($view)
+{
+	$view->with(array('menuItems' => \Config::get('backend::menuItems')));
+	$view->with(array('customMenu' => \Config::get('backend::customMenu')));
 });
 
 Route::get('admin', function()
