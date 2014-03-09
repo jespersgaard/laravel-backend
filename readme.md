@@ -16,9 +16,11 @@ Then update Composer
 
     composer update
 
-Add the service provider in `app/config/app.php`:
+Add the service providers in `app/config/app.php`:
 
     'JeroenG\LaravelBackend\LaravelBackendServiceProvider',
+    'JeroenG\LaravelAuth\LaravelAuthServiceProvider',
+	'JeroenG\ActivityLogger\ActivityLoggerServiceProvider',
 
 This package uses my auth package to manage the users. To migrate to create the tables for the users, roles and permissions, you should use this command:
 
