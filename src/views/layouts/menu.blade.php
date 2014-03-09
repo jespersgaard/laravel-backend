@@ -13,6 +13,10 @@
 		<a class="{{ (Request::is('admin/pages') ? 'active' : '') }} item" href="{{ url('admin/pages') }}"><i class="home basic icon"></i>Pages</a>
 	@endif
 
+	@if($menuItems['activity'])
+		<a class="{{ (Request::is('admin/activity') ? 'active' : '') }} item" href="{{ url('admin/activity') }}"><i class="home basic icon"></i>Pages</a>
+	@endif
+
 	@if($menuItems['gallery'])
 	    <a class="{{ (Request::is('admin/gallery') ? 'active' : '') }} item" href="{{ url('admin/gallery') }}"><i class="home basic icon"></i>Photo Gallery</a>
 	@endif

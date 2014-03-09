@@ -7,6 +7,7 @@ return array(
 		'users' 	=> true,
 		'gallery' 	=> true,
 		'pages'		=> true,
+		'activity'	=> true,
 	),
 
 	// Here you can add your own menu items.
