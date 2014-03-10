@@ -11,11 +11,13 @@ return array(
 	),
 
 	// Here you can add your own menu items.
+	// You can choose an icon from http://semantic-ui.com/elements/icon.html#/basic and put here only the name of the icon.
 	'customMenu' => array(
 		'Home' => array(
 			'route' => '/',
 			'text' 	=> 'Back to site',
 			'class' => 'item',
+			'icon'	=>	'left arrow',
 		),
 	),
 
