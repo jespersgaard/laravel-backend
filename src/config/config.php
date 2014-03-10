@@ -15,6 +15,7 @@ return array(
 	'customMenu' => array(
 		'Home' => array(
 			'route' => '/',
+			'action'=> 'HomeController@showWelcome',
 			'text' 	=> 'Back to site',
 			'class' => 'item',
 			'icon'	=>	'left arrow',
