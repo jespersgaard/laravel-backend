@@ -27,14 +27,26 @@ Route::get('admin', function()
 
 Route::get('admin/login', function()
 {
-	if (Auth::attempt(array('username' => 'jeroen', 'password' => 'secret')))
+	return \View::make('backend::index');
+});
+
+Route::post('admin/login', function()
+{
+	$credentials = array(
+		'username'	=>	Input::get('username'),
+		'password'	=>	Input::get('password'),
+	);
+
+	$v = new Validators\Login;
+	if($v->passes($credentials))
 	{
-	    return Redirect::intended('admin/dashboard');
-	}
-	else
-	{
-		return "not logged in";
-	}
+		if (Auth::attempt($credentials))
+		{
+			return Redirect::intended('admin/dashboard');
+		}
+		return Redirect::back()->withInput()->withErrors(array('Incorrect username or password'));
+  	}
+   	return Redirect::back()->withInput()->withErrors($v->messages);
 });
 
 Route::group(array('prefix' => 'admin', 'before' => 'auth.admin'), function()
