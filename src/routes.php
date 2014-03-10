@@ -59,6 +59,10 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth.admin'), function()
 	Route::get('dashboard', 'JeroenG\LaravelBackend\Controllers\DashboardController@showIndex');
 
 	Route::get('users', 'JeroenG\LaravelBackend\Controllers\UsersController@showIndex');
+	Route::get('users/new', 'JeroenG\LaravelBackend\Controllers\UsersController@showNew');
+	Route::post('users/new', 'JeroenG\LaravelBackend\Controllers\UsersController@postNew');
+	Route::get('users/edit/{id}', 'JeroenG\LaravelBackend\Controllers\UsersController@showEdit');
+	Route::post('users/edit/{id}', 'JeroenG\LaravelBackend\Controllers\UsersController@postEdit');
 
 	Route::get('pages', 'JeroenG\LaravelBackend\Controllers\PagesController@showIndex');
 
