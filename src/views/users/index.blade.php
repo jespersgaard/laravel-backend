@@ -26,11 +26,11 @@
 					</td>
 					<td class="ui buttons">
 						@if(is_null($user->deleted_at))
-							<div class="ui labeled icon red disable-user button"><i class="block basic icon"></i>Disable user</div>
+							<a class="ui labeled icon red disable-user button" href="{{ url('admin/users/disable', array($user->id)) }}"><i class="block basic icon"></i>Disable user</a>
 						@else
-							<div class="ui labeled icon blue enable-user button"><i class="check basic icon"></i>Enable user</div>
+							<a class="ui labeled icon blue enable-user button" href="{{ url('admin/users/enable', array($user->id)) }}"><i class="check basic icon"></i>Enable user</a>
 						@endif
-						<div class="ui labeled icon red delete-user button"><i class="delete basic icon"></i>Delete user</div>
+						<a class="ui labeled icon red delete-user button" href="{{ url('admin/users/delete', array($user->id)) }}"><i class="delete basic icon"></i>Delete user</a>
 					</td>
 					
 				</tr>
@@ -39,69 +39,24 @@
 	</table>
 @endif
 
-<div class="ui small disable-user modal">
-  <i class="close icon"></i>
-  <div class="header">
-    Disable user
-  </div>
-  <div class="content">
-  	<p>test</p>
-  </div>
-  <div class="actions">
-    <div class="ui buttons">
-      <div class="ui button">Cancel</div>
-      <div class="or"></div>
-      <div class="ui negative button">Disable</div>
-    </div>
-  </div>
-</div>
-
-<div class="ui small enable-user modal">
-  <i class="close icon"></i>
-  <div class="header">
-    Enable user
-  </div>
-  <div class="content">
-  	<p>test</p>
-  </div>
-  <div class="actions">
-    <div class="ui buttons">
-      <div class="ui button">Cancel</div>
-      <div class="or"></div>
-      <div class="ui positive button">Enable</div>
-    </div>
-  </div>
-</div>
-
-<div class="ui small delete-user modal">
-  <i class="close icon"></i>
-  <div class="header">
-    Delete user
-  </div>
-  <div class="content">
-  	<p>test</p>
-  </div>
-  <div class="actions">
-    <div class="ui buttons">
-      <div class="ui button">Cancel</div>
-      <div class="or"></div>
-      <div class="ui negative button">Delete</div>
-    </div>
-  </div>
-</div>
-
 @stop
 
 @section('js')
 <script type="text/javascript">
-$('.ui.disable-user.modal')
-  .modal('attach events', '.disable-user.button', 'show')
+$('.ui.enable-user')
+  .popup({
+    content: '<p> When you disable a user, it looks like it is deleted. The only difference is that a disabled user can be restored. <br/> Click the button to bring this user back into the system.</p>'
+  })
 ;
-$('.ui.enable-user.modal')
-  .modal('attach events', '.enable-user.button', 'show')
+$('.ui.disable-user')
+  .popup({
+    content: '<p>When you disable a user, it looks like it is deleted. The only difference is that a disabled user can be restored. <br/> Click the button to disable the user.</p>'
+  })
 ;
-$('.ui.delete-user.modal')
-  .modal('attach events', '.delete-user.button', 'show')
+$('.ui.delete-user')
+  .popup({
+    content: '<p>Be careful! Once deleted, you cannot restore a user.</p>'
+  })
 ;
 </script>
 @stop

@@ -64,4 +64,22 @@ class UsersController extends BaseController {
 	  	}
 	   	return \Redirect::back()->withInput()->withErrors($v->messages);
 	}
+
+	public function doDisable($userId)
+	{
+		\Auth::deleteUser($userId, false);
+		return \Redirect::back();
+	}
+
+	public function doEnable($userId)
+	{
+		$user = User::onlyTrashed()->where('id', $userId)->restore();
+		return \Redirect::back();
+	}
+
+	public function doDelete($userId)
+	{
+		\Auth::deleteUser($userId, true);
+		return \Redirect::back();
+	}
 }
