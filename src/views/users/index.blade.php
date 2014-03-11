@@ -1,8 +1,5 @@
 @section('content')
 
-@if(class_exists('LPages'))
-	<?php	if(LPages::pageExists('dashboard')) LPages::getPage('dashboard'); ?>
-@else
 	<h1>Users</h1>
 	<div class="ui segment">
 		<a class="ui labeled icon blue button" href="{{ url('admin/users/new') }}"><i class="add user basic icon"></i>New user</a>
@@ -37,8 +34,7 @@
 			@endforeach
 		</tbody>
 	</table>
-@endif
-
+	
 @stop
 
 @section('js')
