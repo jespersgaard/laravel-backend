@@ -40,7 +40,7 @@ class UsersController extends BaseController {
 		$user = User::find($userId);
         if (is_null($user))
         {
-            return Redirect::route('messages.index');
+            return Redirect::to('admin/users');
         }
 
 		$this->layout->content = \View::make('backend::users.edit')->with('user', $user);
