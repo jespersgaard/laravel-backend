@@ -68,6 +68,13 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth.admin'), function()
 	Route::get('users/delete/{id}', 'JeroenG\LaravelBackend\Controllers\UsersController@doDelete');
 
 	Route::get('pages', 'JeroenG\LaravelBackend\Controllers\PagesController@showIndex');
+	Route::get('pages/new', 'JeroenG\LaravelBackend\Controllers\PagesController@showNew');
+	Route::post('pages/new', 'JeroenG\LaravelBackend\Controllers\PagesController@postNew');
+	Route::get('pages/edit/{id}', 'JeroenG\LaravelBackend\Controllers\PagesController@showEdit');
+	Route::post('pages/edit/{id}', 'JeroenG\LaravelBackend\Controllers\PagesController@postEdit');
+	Route::get('pages/disable/{id}', 'JeroenG\LaravelBackend\Controllers\PagesController@doDisable');
+	Route::get('pages/enable/{id}', 'JeroenG\LaravelBackend\Controllers\PagesController@doEnable');
+	Route::get('pages/delete/{id}', 'JeroenG\LaravelBackend\Controllers\PagesController@doDelete');
 
 	Route::get('activity', 'JeroenG\LaravelBackend\Controllers\ActivityController@showIndex');
 
