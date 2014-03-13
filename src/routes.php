@@ -76,7 +76,8 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth.admin'), function()
 	Route::get('pages/enable/{id}', 'JeroenG\LaravelBackend\Controllers\PagesController@doEnable');
 	Route::get('pages/delete/{id}', 'JeroenG\LaravelBackend\Controllers\PagesController@doDelete');
 
-	Route::get('activity', 'JeroenG\LaravelBackend\Controllers\ActivityController@showIndex');
+	Route::get('activity/clean/{number?}', 'JeroenG\LaravelBackend\Controllers\ActivityController@doClean');
+	Route::get('activity/{number?}', 'JeroenG\LaravelBackend\Controllers\ActivityController@showIndex');
 
 	Route::get('gallery', 'JeroenG\LaravelBackend\Controllers\GalleryController@showIndex');
 

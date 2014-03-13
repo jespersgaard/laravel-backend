@@ -28,6 +28,7 @@ class UsersController extends BaseController {
 		{
 			if (\Auth::addUser($input['username'], $input['password'], $input['email']))
 			{
+				\Activity::log('A new user has been created', array('created' => $input['username'], 'by' => \Auth::user()->id));
 				return \Redirect::to('admin/users');
 			}
 			return \Redirect::back()->withInput()->withErrors(array('Unable to create a new user'));
@@ -60,6 +61,7 @@ class UsersController extends BaseController {
 		if($v->passes($input))
 		{
 			// TODO: update user
+			\Activity::log('A user has been edited', array('edited' => $userId, 'by' => \Auth::user()->id));
 			return \Redirect::back()->withInput()->withErrors(array('Unable to edit a new user'));
 	  	}
 	   	return \Redirect::back()->withInput()->withErrors($v->messages);
@@ -68,18 +70,21 @@ class UsersController extends BaseController {
 	public function doDisable($userId)
 	{
 		\Auth::deleteUser($userId, false);
+		\Activity::log('A user has been disabled', array('disabled' => $userId, 'by' => \Auth::user()->id));
 		return \Redirect::back();
 	}
 
 	public function doEnable($userId)
 	{
 		$user = User::onlyTrashed()->where('id', $userId)->restore();
+		\Activity::log('A user has been enabled', array('enabled' => $userId, 'by' => \Auth::user()->id));
 		return \Redirect::back();
 	}
 
 	public function doDelete($userId)
 	{
 		\Auth::deleteUser($userId, true);
+		\Activity::log('A user has been deleted', array('deleted' => $userId, 'by' => \Auth::user()->id));
 		return \Redirect::back();
 	}
 }
