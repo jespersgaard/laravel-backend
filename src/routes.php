@@ -79,7 +79,28 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth.admin'), function()
 	Route::get('activity/clean/{number?}', 'JeroenG\LaravelBackend\Controllers\ActivityController@doClean');
 	Route::get('activity/{number?}', 'JeroenG\LaravelBackend\Controllers\ActivityController@showIndex');
 
-	Route::get('gallery', 'JeroenG\LaravelBackend\Controllers\GalleryController@showIndex');
+	Route::group(array('prefix' => 'gallery'), function()
+	{
+		Route::get('/', 'JeroenG\LaravelBackend\Controllers\GalleryController@showIndex');
+		Route::get('albums', 'JeroenG\LaravelBackend\Controllers\GalleryController@showAlbums');
+		Route::get('albums/new', 'JeroenG\LaravelBackend\Controllers\GalleryController@showNewAlbum');
+		Route::post('albums/new', 'JeroenG\LaravelBackend\Controllers\GalleryController@postNewAlbum');
+		Route::get('albums/edit/{id}', 'JeroenG\LaravelBackend\Controllers\GalleryController@showEditAlbum');
+		Route::post('albums/edit/{id}', 'JeroenG\LaravelBackend\Controllers\GalleryController@postEditAlbum');
+		Route::get('albums/disable/{id}', 'JeroenG\LaravelBackend\Controllers\GalleryController@doAlbumDisable');
+		Route::get('albums/enable/{id}', 'JeroenG\LaravelBackend\Controllers\GalleryController@doAlbumEnable');
+		Route::get('albums/delete/{id}', 'JeroenG\LaravelBackend\Controllers\GalleryController@doAlbumDelete');
+
+		Route::get('photos', 'JeroenG\LaravelBackend\Controllers\GalleryController@showPhotos');
+		Route::get('album/photos/{albumId}', 'JeroenG\LaravelBackend\Controllers\GalleryController@showAlbumPhotos');
+		Route::get('photos/new', 'JeroenG\LaravelBackend\Controllers\GalleryController@showNewPhoto');
+		Route::post('photos/new', 'JeroenG\LaravelBackend\Controllers\GalleryController@postNewPhoto');
+		Route::get('photos/edit/{id}', 'JeroenG\LaravelBackend\Controllers\GalleryController@showEditPhoto');
+		Route::post('photos/edit/{id}', 'JeroenG\LaravelBackend\Controllers\GalleryController@postEditPhoto');
+		Route::get('photos/disable/{id}', 'JeroenG\LaravelBackend\Controllers\GalleryController@doPhotoDisable');
+		Route::get('photos/enable/{id}', 'JeroenG\LaravelBackend\Controllers\GalleryController@doPhotoEnable');
+		Route::get('photos/delete/{id}', 'JeroenG\LaravelBackend\Controllers\GalleryController@doPhotoDelete');
+	});
 
 	Route::get('logout', function()
 	{
