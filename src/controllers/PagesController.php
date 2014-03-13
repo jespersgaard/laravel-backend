@@ -17,15 +17,17 @@ class PagesController extends BaseController {
 
 	public function postNew()
 	{
-		$title = \Input::get('title');
-		$content = \Input::get('content');
-		$slug = \Input::get('slug');
-		if(empty($slug)) $slug = null;
-
+		$input = array(
+			'page_title' => \Input::get('page_title'),
+			'page_content' => \Input::get('page_content'),
+			'page_slug' => \Input::get('page_slug')
+		);
+		if(empty($input['slug'])) $input['slug'] = null;
+		
 		$v = new \Validators\NewPage;
 		if($v->passes($input))
 		{
-			if (\LPages::addPage($title, $content, $slug))
+			if (\LPages::addPage($input['page_title'], $input['page_content'], $input['page_slug']))
 			{
 				return \Redirect::to('admin/pages');
 			}
@@ -47,14 +49,16 @@ class PagesController extends BaseController {
 
 	public function postEdit($pageId)
 	{
-		$pagetitle = \Input::get('title');
-		$content = \Input::get('content');
-		$slug = \Input::get('slug');
+		$input = array(
+			'page_title' => \Input::get('page_title'),
+			'page_content' => \Input::get('page_content'),
+			'page_slug' => \Input::get('page_slug')
+		);
 
 		$v = new \Validators\EditPage;
 		if($v->passes($input))
 		{
-			if (\LPages::updatePage($pageId, $title, $content, $slug))
+			if (\LPages::updatePage($pageId, $input['page_title'], $input['page_content'], $input['page_slug']))
 			{
 				return \Redirect::to('admin/pages');
 			}

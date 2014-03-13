@@ -2,30 +2,31 @@
 
 @include('backend::partials.messages')
 
-  <h1>New user</h1>
+  <h1>New Page</h1>
 
-{{ Form::open(array('url' => 'admin/users/new', 'class' => 'ui form segment')) }}
+{{ Form::open(array('url' => 'admin/pages/new', 'class' => 'ui form segment')) }}
 
     <div class="field">
-    {{ Form::label('username', 'Username') }}
-    {{ Form::text('username'); }}
+    {{ Form::label('page_title', 'Title') }}
+    {{ Form::text('page_title'); }}
   </div>
 
   <div class="field">
-    {{ Form::label('email', 'Email') }}
-    {{ Form::text('email'); }}
+    {{ Form::label('page_slug', 'Custom slug (optional)') }}
+    {{ Form::text('page_slug'); }}
   </div>
 
   <div class="field">
-    {{ Form::label('password', 'Password') }}
-    {{ Form::password('password') }}
+    {{ Form::label('page_content', 'Content') }}
+    {{ Form::textarea('page_content') }}
   </div>
 
   <div class="ui buttons">
-    <a class="ui button" href="{{ url('admin/users') }}">Cancel</a>
+    <a class="ui button" href="{{ url('admin/pages') }}">Cancel</a>
     <div class="or"></div>
     {{ Form::submit("Submit", array('class' => 'ui positive submit button')) }}
   </div>
+  
 {{ Form::close() }}
 
 @stop

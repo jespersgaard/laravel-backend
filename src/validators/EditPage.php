@@ -3,8 +3,8 @@
 class EditPage extends Validator {
 
 	public static $rules = array(
-    'title' 	=> 	'required',
-    'content'	=>	'required',
-    'slug'		=>	'required',
+    'page_title' 	=> 	'required',
+    'page_content'	=>	'required',
+    'page_slug'		=>	'required',
   	);
 }

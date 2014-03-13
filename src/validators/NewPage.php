@@ -3,7 +3,7 @@
 class NewPage extends Validator {
 
 	public static $rules = array(
-    'title' 	=> 	'required',
-    'content'	=>	'required',
+    'page_title' 	=> 	'required',
+    'page_content'	=>	'required',
   	);
 }
