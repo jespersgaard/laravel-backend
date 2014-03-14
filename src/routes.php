@@ -79,6 +79,7 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth.admin'), function()
 	Route::get('activity/clean/{number?}', 'JeroenG\LaravelBackend\Controllers\ActivityController@doClean');
 	Route::get('activity/{number?}', 'JeroenG\LaravelBackend\Controllers\ActivityController@showIndex');
 
+				/* Gallery routes */
 	Route::group(array('prefix' => 'gallery'), function()
 	{
 		Route::get('/', 'JeroenG\LaravelBackend\Controllers\GalleryController@showIndex');
@@ -92,7 +93,7 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth.admin'), function()
 		Route::get('albums/delete/{id}', 'JeroenG\LaravelBackend\Controllers\GalleryController@doAlbumDelete');
 
 		Route::get('photos', 'JeroenG\LaravelBackend\Controllers\GalleryController@showPhotos');
-		Route::get('album/photos/{albumId}', 'JeroenG\LaravelBackend\Controllers\GalleryController@showAlbumPhotos');
+		Route::get('album/photos/{id}', 'JeroenG\LaravelBackend\Controllers\GalleryController@showAlbumPhotos');
 		Route::get('photos/new', 'JeroenG\LaravelBackend\Controllers\GalleryController@showNewPhoto');
 		Route::post('photos/new', 'JeroenG\LaravelBackend\Controllers\GalleryController@postNewPhoto');
 		Route::get('photos/edit/{id}', 'JeroenG\LaravelBackend\Controllers\GalleryController@showEditPhoto');
