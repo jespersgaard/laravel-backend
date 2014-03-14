@@ -5,8 +5,8 @@ return array(
 	// Turn these on if you have those packages installed. The laravel-auth package (users) is included in this package.
 	'menuItems' => array(
 		'users' 	=> true,
-		'gallery' 	=> true,
-		'pages'		=> true,
+		'gallery' 	=> false,
+		'pages'		=> false,
 		'activity'	=> true,
 	),
 
